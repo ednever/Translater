@@ -11,11 +11,12 @@ while vastus:
     3. Uus sõna
     4. Viga parandamine
     5. Test
-    6. Välja minna""")
+    6. Rääkimine
+    7. Välja minna""")
     vastus = input("-> ")
     if vastus == "1":
-        print(ang)
-        print(rus)
+        for i in range(len(ang)):
+            print(rus[i]+"-"+ang[i])
         continue
     elif vastus == "2":
         slovo = input("Kirjuta sõna mis tahad tõlkida -> ")
@@ -28,21 +29,19 @@ while vastus:
                 print(f"{slovo} - {rus[indeks]}")
             elif slovo in rus:
                 indeks = rus.index(slovo)
-                print(f"{slovo} - {est[indeks]}")
-                
+                print(f"{slovo} - {ang[indeks]}")                
     elif vastus == "3":
-        print()
+        slovo = input()
+        new_word("ang.txt",slovo,ang)
     elif vastus == "4":
         print()
     elif vastus == "5":
         print()
     elif vastus == "6":
+        text=input("->")
+        keel=input("->")
+        heli(text,keel)
+    elif vastus == "7":
         break
     else:
         print("Vale andmetüüp!")
-#slovoAng = ang[0]
-#slovoRus = rus[0]
-#if slovoAng in ang and slovoRus in rus:
-#    if ang.index(slovoAng) == rus.index(slovoRus):
-#        print("Nice")
-

@@ -1,3 +1,5 @@
+import os
+from gtts import gTTS
 def failist_lugemine(f:str,l:list)->list:
     """Info failist f listisse l
     :param str f: fail infoga
@@ -29,10 +31,11 @@ def rida_salvestamine(f:str,rida:str):
     fail.write(rida + "\n")
     fail.close()
 
-def uus_sona(f:str,rida:str)->list:
+def new_word(f:str,rida:str,l:list)->list:
     """
-    :param str f:
-    :param str rida:
+    :param str f: Faili nimetus
+    :param str rida: Lisatav sõna
+    :param list l: sõnade loetelu
     :rtype: list
     """
     l = []
@@ -46,3 +49,18 @@ def translate(slovo:str)->str:
     :param str slovo:
     :rtype:
     """
+
+def heli(text:str,keel:str):
+    obj = gTTS(text = text,lang = keel, slow = False).save("heli.mp3")
+    os.system("heli.mp3")
+
+def correction(sona:str,l:list):
+    """
+    :param str text: sõna mis tahad rääkida
+    :param str keel: millises keeles tahad rääkida
+    """
+    for i in range(len(l)):
+        if l[i] = sona:
+            uus_sona = sona.replace(sona,input("Uus sõna -> "))
+            l.insert(i,uus_sona)
+            l.remove(sona)
