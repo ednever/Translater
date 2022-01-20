@@ -19,7 +19,17 @@ while vastus:
         continue
     elif vastus == "2":
         slovo = input("Kirjuta sõna mis tahad tõlkida -> ")
-        if slovo in 
+        if slovo not in ang and slovo not in rus:
+            print(f"Sõna {slovo} veel pole meie sõnastikus aga te võite teda lisada")
+            continue
+        else:
+            if slovo in ang:
+                indeks = ang.index(slovo)
+                print(f"{slovo} - {rus[indeks]}")
+            elif slovo in rus:
+                indeks = rus.index(slovo)
+                print(f"{slovo} - {est[indeks]}")
+                
     elif vastus == "3":
         print()
     elif vastus == "4":
@@ -30,8 +40,9 @@ while vastus:
         break
     else:
         print("Vale andmetüüp!")
-slovoAng = ang[0]
-slovoRus = rus[0]
-if slovo1 in ang and slovo2 in rus:
-    if ang.index(slovo1) == rus.index(slovo2):
-        print("Nice")
+#slovoAng = ang[0]
+#slovoRus = rus[0]
+#if slovoAng in ang and slovoRus in rus:
+#    if ang.index(slovoAng) == rus.index(slovoRus):
+#        print("Nice")
+

@@ -2,6 +2,7 @@ def failist_lugemine(f:str,l:list)->list:
     """Info failist f listisse l
     :param str f: fail infoga
     :param list l: loend kuhu lisatakse infot
+    :rtype: list
     """
     fail = open(f,"r",encoding="utf-8-sig")
     for rida in fail:
@@ -22,7 +23,7 @@ def failisse_salvestamine(f:str,l:list):
 def rida_salvestamine(f:str,rida:str):
     """Üks sõna või lause(rida) salvestamine failisse
     :param str f: fail kuhu salvestame
-    : str rida: sõna, mis vajab salvestada failisse
+    :param str rida: sõna, mis vajab salvestada failisse
     """
     fail = open(f,"a")
     fail.write(rida + "\n")
@@ -30,8 +31,9 @@ def rida_salvestamine(f:str,rida:str):
 
 def uus_sona(f:str,rida:str)->list:
     """
-    ::
-    ::
+    :param str f:
+    :param str rida:
+    :rtype: list
     """
     l = []
     with open(f,"a",encoding="utf-8-sig") as fail:
@@ -39,4 +41,8 @@ def uus_sona(f:str,rida:str)->list:
     l = failist_lugemine(f)
     return l
 
-def translate
+def translate(slovo:str)->str:
+    """
+    :param str slovo:
+    :rtype:
+    """
