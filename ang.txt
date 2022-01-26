@@ -2,3 +2,9 @@ apple
 dog
 cat
 car
+fish
+elephant
+orange
+window
+banana
+kupi

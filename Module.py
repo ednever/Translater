@@ -1,5 +1,6 @@
-import os
-from gtts import gTTS
+from random import*
+#import os
+#from gtts import gTTS
 def failist_lugemine(f:str,l:list)->list:
     """Info failist f listisse l
     :param str f: fail infoga
@@ -12,55 +13,51 @@ def failist_lugemine(f:str,l:list)->list:
     fail.close()
     return l
 
-def failisse_salvestamine(f:str,l:list):
-    """Loetele salvestame failisse
-    :param str f: fail kuhu salvestame
-    :param list l: loend kuhu lisatakse infot
-    """
-    fail = open(f,"w")
-    for el in l:
-        fail.write(el + "\n")
-    fail.close()
-
-def rida_salvestamine(f:str,rida:str):
-    """Üks sõna või lause(rida) salvestamine failisse
-    :param str f: fail kuhu salvestame
-    :param str rida: sõna, mis vajab salvestada failisse
-    """
-    fail = open(f,"a")
-    fail.write(rida + "\n")
-    fail.close()
-
-def new_word(f:str,rida:str,l:list)->list:
-    """
+def new_word(f:str,slovo:str,l:list)->list:
+    """Lisatakse uut sõna failisse ja loendisse
     :param str f: Faili nimetus
-    :param str rida: Lisatav sõna
+    :param str slovo: Lisatav sõna
     :param list l: sõnade loetelu
     :rtype: list
     """
-    l = []
     with open(f,"a",encoding="utf-8-sig") as fail:
-        fail.write(rida + "\n")
-    l = failist_lugemine(f)
+        fail.write(slovo + "\n")
+    l.append(slovo)
     return l
 
-def translate(slovo:str)->str:
-    """
-    :param str slovo:
-    :rtype:
-    """
+#def heli(text:str,keel:str):
+#    """
+#    :param str text: sõna mis tahad rääkida
+#    :param str keel: millises keeles tahad rääkida
+#    obj = gTTS(text = text,lang = keel, slow = False).save("heli.mp3")
+#    os.system("heli.mp3")
 
-def heli(text:str,keel:str):
-    obj = gTTS(text = text,lang = keel, slow = False).save("heli.mp3")
-    os.system("heli.mp3")
-
-def correction(sona:str,l:list):
-    """
-    :param str text: sõna mis tahad rääkida
-    :param str keel: millises keeles tahad rääkida
+def correction(slovo:str,l:list):
+    """Asendame vana sõna uue sõnaga
+    :param str slovo: sõna mis tahad parandada
+    :param list l: loend kus parandatakse
     """
     for i in range(len(l)):
-        if l[i] = sona:
-            uus_sona = sona.replace(sona,input("Uus sõna -> "))
-            l.insert(i,uus_sona)
-            l.remove(sona)
+        if l[i] == slovo:
+            uus_slovo = slovo.replace(slovo,input("Uus sõna >>> "))
+            l.insert(i,uus_slovo)
+            l.remove(slovo)
+            print(f"Vana sõna {slovo} on asendatud sõnaga {uus_slovo}!")
+
+
+def test(result:int,l:list,l2:list)->int:
+    """Juhuslikult valitakse sõna loendist, ning pärast kontrollitakse
+    :param int result: Punktide arv
+    :param list l: Vene keele sõnastik
+    :param list l2: Inglise keele sõnastik
+    :rtype: int
+    """
+    slovo = choice(l)
+    otvet = input(f"{slovo} >>> ")
+    if otvet in l2: 
+        if l2.index(otvet) == l.index(slovo):
+            result += 1
+            print("Õige")
+    else:
+        print("Vale")
+    return result
